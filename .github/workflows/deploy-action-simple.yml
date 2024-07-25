@@ -12,7 +12,7 @@ jobs:
   example_matrix:
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [ubuntu-latest]
         node: [14, 16]
         include:
           - os: windows-latest
@@ -20,9 +20,24 @@ jobs:
             npm: 6
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/setup-node@v4
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: Setup Node  
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+      
+      - name: Install Dependencies    
       - if: ${{ matrix.npm }}
         run: npm install -g npm@${{ matrix.npm }}
       - run: npm --version
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages-${{ matrix.os }}-${{ matrix.version }}
+          path: build/github-pages-${{ matrix.os }}-${{ matrix.version }}
+      
