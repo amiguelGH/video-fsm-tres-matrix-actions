@@ -19,23 +19,21 @@ jobs:
             node: 16
             npm: 6
     runs-on: ${{ matrix.os }}
+
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
-
       - name: Setup Node  
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      
-      - name: Install Dependencies    
-        if: ${{ matrix.npm }}
-        run: npm install -g npm@${{ matrix.npm }}
-      - run: npm --version
 
+      - name: Install Dependencies    
+        run: npm ci
       - name: Build Project
         run: npm run build
-
+        
+      
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
