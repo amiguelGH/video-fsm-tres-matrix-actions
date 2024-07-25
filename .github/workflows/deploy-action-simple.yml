@@ -29,7 +29,7 @@ jobs:
           node-version: ${{ matrix.node }}
       
       - name: Install Dependencies    
-      - if: ${{ matrix.npm }}
+        if: ${{ matrix.npm }}
         run: npm install -g npm@${{ matrix.npm }}
       - run: npm --version
 
