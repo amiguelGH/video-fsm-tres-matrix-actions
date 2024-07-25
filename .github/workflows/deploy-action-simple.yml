@@ -34,11 +34,11 @@ jobs:
       - run: npm --version
 
       - name: Build Project
-        run: npm run build/${{ matrix.os }}-${{ matrix.version }
+        run: npm run build/${{ matrix.os }}-${{ matrix.version }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: github-pages-${{ matrix.os }}-${{ matrix.version }}
-          path: build/${{ matrix.os }}-${{ matrix.version }/github-pages-${{ matrix.os }}-${{ matrix.version }}
+          path: build/${{ matrix.os }}-${{ matrix.version }}/github-pages-${{ matrix.os }}-${{ matrix.version }}
       
