@@ -13,10 +13,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14, 16]
+        node: [20, 16]
         include:
           - os: windows-latest
-            node: 16
+            node: 20
             npm: 6
     runs-on: ${{ matrix.os }}
 
