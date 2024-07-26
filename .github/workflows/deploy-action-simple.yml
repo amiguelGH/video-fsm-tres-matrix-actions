@@ -35,17 +35,19 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Upload artifacts
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: "github-pages"
-          path: build 
+     
 
         if: github.ref == 'refs/heads/main' && github.repository == 'REPO_OWNER/REPO_NAME'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+      
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: "github-pages"
+          path: build 
+          
       - name: Deploy with gh-pages
         uses: actions/deploy-pages@v4
         with: 
