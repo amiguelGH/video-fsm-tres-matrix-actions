@@ -1,4 +1,4 @@
-name: ci
+name: deploy-action-simple
  
 on:
   push:
