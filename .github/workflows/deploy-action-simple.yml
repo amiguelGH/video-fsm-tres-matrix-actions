@@ -35,8 +35,7 @@ jobs:
       - name: Build Project
         run: npm run build
 
-     
-
+   
         if: github.ref == 'refs/heads/main' && github.repository == 'REPO_OWNER/REPO_NAME'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
